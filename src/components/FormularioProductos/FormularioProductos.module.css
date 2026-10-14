@@ -1,0 +1,115 @@
+.formulario {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	width: 100%;
+	max-width: 28rem;
+	margin: 2rem auto;
+	padding: 2rem;
+	box-sizing: border-box;
+	background-color: var(--accent-bg);
+	border: 1px solid var(--accent-border);
+	border-radius: 1rem;
+	box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.titulo {
+	margin: 0;
+	font-size: 1.5rem;
+	text-align: center;
+	color: var(--text-h);
+}
+
+.campo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.etiqueta {
+	font-weight: 600;
+	font-size: 0.95rem;
+	color: var(--text-h);
+}
+
+.input {
+	width: 100%;
+	padding: 0.7rem 0.9rem;
+	box-sizing: border-box;
+	font: inherit;
+	color: var(--text-h);
+	background-color: #fff;
+	border: 1px solid var(--accent-border);
+	border-radius: 0.5rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.input::file-selector-button {
+	margin-right: 0.75rem;
+	padding: 0.4rem 0.8rem;
+	font: inherit;
+	font-weight: 600;
+	color: var(--text-h);
+	background-color: var(--accent);
+	border: 0;
+	border-radius: 0.4rem;
+	cursor: pointer;
+}
+
+.fila {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.boton {
+	padding: 0.85rem 1rem;
+	font: inherit;
+	font-weight: 600;
+	color: var(--text-h);
+	background-color: var(--accent);
+	border: 0;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.boton:hover {
+	background-color: var(--accent-hover);
+}
+
+.boton:focus-visible {
+	outline: 3px solid rgba(37, 99, 235, 0.35);
+	outline-offset: 2px;
+}
+
+/* Tablet / móvil */
+@media (max-width: 768px) {
+	.formulario {
+		margin: 1rem auto;
+		padding: 1.5rem;
+	}
+}
+
+/* Móvil: precio y stock en una sola columna */
+@media (max-width: 480px) {
+	.formulario {
+		max-width: none;
+		padding: 1.25rem;
+		border-radius: 0.75rem;
+	}
+
+	.fila {
+		grid-template-columns: 1fr;
+	}
+
+	.titulo {
+		font-size: 1.25rem;
+	}
+}
