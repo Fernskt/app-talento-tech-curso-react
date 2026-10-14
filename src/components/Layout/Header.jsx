@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
+import { CartWidget } from '../CartWidget/CartWidget';
 
 const Header = () => {
 	return (
@@ -24,7 +25,10 @@ const Header = () => {
 				</ul>
 			</nav>
 
-			<Link to="/alta" className={styles.loginButton}>Alta de Producto</Link>
+			<div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+				<CartWidget />
+				<Link to="/alta" className={styles.loginButton}>Alta de Producto</Link>
+			</div>
 		</header>
 	);
 };

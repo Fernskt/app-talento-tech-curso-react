@@ -1,5 +1,5 @@
 import Grid from './Grid/Grid';
-import TarjetaProducto from "./Tarjetas/TarjetaProducto";
+import Item from "./Item/Item";
 import { useState, useEffect } from "react";
 
 export function ItemListContainer({ Mensaje }) {
@@ -20,19 +20,21 @@ export function ItemListContainer({ Mensaje }) {
             });
     }, []);
 
+    if (loading) return <p>Cargando productos...</p>;
+    if (error) return <p>Error al cargar los productos.</p>;
+
     return (
         <div>
             <h2>{Mensaje}</h2>
             <Grid>
-                {productos.map((producto, index) => (
-                    <TarjetaProducto
-                        key={index}
+                {productos.map((producto) => (
+                    <Item
+                        key={producto.id}
+                        id={producto.id}
                         imagen={producto.imagen}
                         nombre={producto.nombre}
                         precio={producto.precio}
                         stock={producto.stock}
-                        loading={loading}
-                        error={error}
                     />
                 ))}
             </Grid>
