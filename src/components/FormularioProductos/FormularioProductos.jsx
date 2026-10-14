@@ -1,60 +1,68 @@
-// En src/componentens/FormularioProducto/FormularioProducto
-import React from 'react';
-// Por ahora, es un componente súper simple. Solo muestra el HTML.
+import styles from './FormularioProductos.module.css';
+
 export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, manejarCambioImagen }) {
-    const formStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '24rem',
-        margin: '3rem auto',
-        padding: '1.5rem',
-        border: '1px solid #ddd',
-        borderRadius: '8px',
-        gap: '16px'
-    };
     return (
-        <form style={formStyle} onSubmit={manejarEnvio}>
-            <h3>Agregar Nuevo Producto</h3>
-            <div>
-                <label>Nombre del Producto:</label>
-                <input 
-                    type="text" 
-                    placeholder="Ej: Camiseta" 
+        <form className={styles.formulario} onSubmit={manejarEnvio}>
+            <h2 className={styles.titulo}>Agregar Nuevo Producto</h2>
+
+            <div className={styles.campo}>
+                <label htmlFor="nombre" className={styles.etiqueta}>Nombre del Producto</label>
+                <input
+                    id="nombre"
+                    className={styles.input}
+                    type="text"
+                    placeholder="Ej: Camiseta"
                     name="nombre"
                     value={datosForm.nombre}
                     onChange={manejarCambio}
+                    required
                 />
             </div>
-            <div>
-                <label>Precio:</label>
-                <input 
-                    type="number" 
-                    placeholder="Ej: 95"
-                    name="precio"
-                    value={datosForm.precio}
-                    onChange={manejarCambio}
-                />
+
+            <div className={styles.fila}>
+                <div className={styles.campo}>
+                    <label htmlFor="precio" className={styles.etiqueta}>Precio</label>
+                    <input
+                        id="precio"
+                        className={styles.input}
+                        type="number"
+                        min="0"
+                        placeholder="Ej: 95"
+                        name="precio"
+                        value={datosForm.precio}
+                        onChange={manejarCambio}
+                        required
+                    />
+                </div>
+                <div className={styles.campo}>
+                    <label htmlFor="stock" className={styles.etiqueta}>Stock</label>
+                    <input
+                        id="stock"
+                        className={styles.input}
+                        type="number"
+                        min="0"
+                        placeholder="Ej: 5"
+                        name="stock"
+                        value={datosForm.stock}
+                        onChange={manejarCambio}
+                        required
+                    />
+                </div>
             </div>
-            <div>
-                <label>Stock:</label>
-                <input 
-                    type="number" 
-                    placeholder="Ej: 5" 
-                    name="stock"
-                    value={datosForm.stock}
-                    onChange={manejarCambio}
-                />
-            </div>
-            <div>
-                <label>Imagen:</label>
-                <input 
-                    type="file" 
-                    placeholder="https://..." 
+
+            <div className={styles.campo}>
+                <label htmlFor="imagen" className={styles.etiqueta}>Imagen</label>
+                <input
+                    id="imagen"
+                    className={styles.input}
+                    type="file"
+                    accept="image/*"
                     name="imagen"
                     onChange={manejarCambioImagen}
                 />
             </div>
-            <button type="submit">Guardar Producto</button>
+
+            <button type="submit" className={styles.boton}>Guardar Producto</button>
         </form>
     );
 }

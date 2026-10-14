@@ -1,5 +1,6 @@
 import Grid from './Grid/Grid';
 import Item from "./Item/Item";
+import styles from './ItemListContainer.module.css';
 import { useState, useEffect } from "react";
 
 export function ItemListContainer({ Mensaje }) {
@@ -24,8 +25,8 @@ export function ItemListContainer({ Mensaje }) {
     if (error) return <p>Error al cargar los productos.</p>;
 
     return (
-        <div>
-            <h2>{Mensaje}</h2>
+        <section className={styles.seccion}>
+            <h2 className={styles.titulo}>{Mensaje}</h2>
             <Grid>
                 {productos.map((producto) => (
                     <Item
@@ -38,6 +39,6 @@ export function ItemListContainer({ Mensaje }) {
                     />
                 ))}
             </Grid>
-        </div>
+        </section>
     );
 }

@@ -3,8 +3,8 @@
  	flex-direction: column;
 	position: relative;
  	width: 100%;
- 	max-width: 12rem;
  	min-height: 14rem;
+ 	box-sizing: border-box;
  	padding: 1.25rem;
  	overflow: hidden;
  	background-color: var(--accent-bg);
@@ -22,7 +22,9 @@
  .imagen {
  	margin: 0 auto;
  	display: block;
- 	width: 150px;
+ 	width: 100%;
+ 	max-width: 150px;
+ 	height: auto;
  	object-fit: cover;
  	border-radius: 0.5rem;
  }
@@ -54,7 +56,13 @@
  }
 
  .boton {
+ 	display: block;
+ 	align-self: center;
+ 	margin-top: auto;
+ 	text-align: center;
+ 	text-decoration: none;
  	width: 100%;
+ 	box-sizing: border-box;
  	padding: 0.7rem 1rem;
  	color: var(--text-h);
  	font: inherit;
@@ -98,6 +106,20 @@
 
  @media (max-width: 480px) {
  	.tarjeta {
- 		max-width: none;
+ 		padding: 0.9rem;
+ 		min-height: 12rem;
+ 	}
+
+ 	.titulo {
+ 		font-size: 1rem;
+ 	}
+
+ 	.precio {
+ 		font-size: 1.05rem;
+ 	}
+
+ 	.boton {
+ 		padding: 0.6rem 0.5rem;
+ 		font-size: 0.9rem;
  	}
  }

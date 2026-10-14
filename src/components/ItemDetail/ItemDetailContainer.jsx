@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
+import styles from "./ItemDetail.module.css";
 
 export function ItemDetailContainer() {
     const { id } = useParams();
@@ -28,9 +29,9 @@ export function ItemDetailContainer() {
     if (error) return <p>Error al cargar el producto.</p>;
     if (!producto) {
         return (
-            <div>
+            <div className={styles.estado}>
                 <p>Producto no encontrado.</p>
-                <Link to="/productos">Volver a productos</Link>
+                <Link to="/productos" className={styles.volver}>Volver a productos</Link>
             </div>
         );
     }
@@ -43,29 +44,63 @@ export function ItemDetailContainer() {
         setAgregado(true);
     };
 
+    const sinStock = producto.stock === 0;
+
     return (
-        <section>
-            <img src={producto.imagen} alt={producto.nombre} width={200} />
-            <h2>{producto.nombre}</h2>
-            <p>Precio: {producto.precio}</p>
-            <p>Stock disponible: {producto.stock}</p>
+        <section className={styles.pagina}>
+            <Link to="/productos" className={styles.volver}>← Volver a productos</Link>
 
-            <div>
-                <button onClick={decrementar}>-</button>
-                <span style={{ margin: "0 0.75rem" }}>{cantidad}</span>
-                <button onClick={incrementar}>+</button>
-            </div>
+            <article className={styles.detalle}>
+                <div className={styles.imagenWrap}>
+                    <img src={producto.imagen} alt={producto.nombre} className={styles.imagen} />
+                </div>
 
-            <button onClick={handleAgregar} disabled={producto.stock === 0}>
-                Agregar al carrito
-            </button>
+                <div className={styles.info}>
+                    <h2 className={styles.nombre}>{producto.nombre}</h2>
+                    <p className={styles.precio}>{producto.precio}</p>
+                    <span className={`${styles.stock} ${sinStock ? styles.sinStock : ''}`}>
+                        {sinStock ? "Sin stock" : `Stock disponible: ${producto.stock}`}
+                    </span>
 
-            {agregado && (
-                <p>
-                    Producto agregado. <Link to="/carrito">Ver carrito</Link>
-                </p>
-            )}
-            <p><Link to="/productos">← Volver a productos</Link></p>
+                    <div className={styles.cantidadWrap}>
+                        <span className={styles.etiqueta}>Cantidad</span>
+                        <div className={styles.contador}>
+                            <button
+                                type="button"
+                                onClick={decrementar}
+                                disabled={cantidad <= 1}
+                                aria-label="Disminuir cantidad"
+                            >
+                                −
+                            </button>
+                            <span className={styles.valor}>{cantidad}</span>
+                            <button
+                                type="button"
+                                onClick={incrementar}
+                                disabled={cantidad >= producto.stock}
+                                aria-label="Aumentar cantidad"
+                            >
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        className={styles.agregar}
+                        onClick={handleAgregar}
+                        disabled={sinStock}
+                    >
+                        Agregar al carrito
+                    </button>
+
+                    {agregado && (
+                        <p className={styles.confirmacion} role="status">
+                            Producto agregado. <Link to="/carrito">Ver carrito</Link>
+                        </p>
+                    )}
+                </div>
+            </article>
         </section>
     );
 }
