@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.130938.avif",
+        "nombre": "Hawas Red",
+        "precio": "$19.99",
+        "stock": 10
+    },
+    {
+        "id": 2,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.51816.avif",
+        "nombre": "Afnan Supremacy",
+        "precio": "$29.99",
+        "stock": 5
+    },
+    {
+        "id": 3,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.78611.avif",
+        "nombre": "club de nuit intense",
+        "precio": "$39.99",
+        "stock": 8
+    },
+    {
+        "id": 4,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.130938.avif",
+        "nombre": "Asad Bourbon",
+        "precio": "$49.99",
+        "stock": 15
+    },
+    {
+        "id": 5,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.51816.avif",
+        "nombre": "Al Haramain L'Aventure",
+        "precio": "$59.99",
+        "stock": 12
+    },
+    {
+        "id": 6,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.78611.avif",
+        "nombre": "Jean Lowe",
+        "precio": "$69.99",
+        "stock": 20
+    },
+    {
+        "id": 7,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.130938.avif",
+        "nombre": "Lattafa Raghba",
+        "precio": "$79.99",
+        "stock": 18
+    },
+    {
+        "id": 8,
+        "imagen": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.51816.avif",
+        "nombre": "Afnan 9pm",
+        "precio": "$89.99",
+        "stock": 25
+    }
+]
